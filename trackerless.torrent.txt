@@ -1,0 +1,25 @@
+array(3) {
+  ["creation date"]=>
+  int(1122245855)
+  ["info"]=>
+  array(4) {
+    ["length"]=>
+    int(6011937)
+    ["name"]=>
+    string(22) "PureGirl_e_ch1and2.zip"
+    ["piece length"]=>
+    int(262144)
+    ["pieces"]=>
+    string(0) ""
+  }
+  ["nodes"]=>
+  array(1) {
+    [0]=>
+    array(2) {
+      [0]=>
+      string(21) "router.bittorrent.com"
+      [1]=>
+      int(6881)
+    }
+  }
+}

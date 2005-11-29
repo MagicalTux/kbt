@@ -1,0 +1,3 @@
+@PHP\PHP BT_CLIENT.PHP
+@pause
+EXIT
