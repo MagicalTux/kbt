@@ -18,7 +18,7 @@ class BtWindow {
 		$this->window = &new GtkWindow;
 		$this->window->set_border_width(5);
 		$this->window->set_size_request(450,220);
-		$this->window->set_title("Cyberjoueurs Bittorrent Downloader");
+		$this->window->set_title("KBT Client");
 		$this->window->connect('delete_event', array(&$this,'bt_quit_cleanup'));
 		
 		// main vertical box
