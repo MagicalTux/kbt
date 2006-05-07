@@ -1,10 +1,7 @@
 <?php
 // CONFIGURATION
 
-//define('BT_HASH','9909dd3aa0f0e19fbfc54cd0cd38de79adedb505');
-//define('BT_URL','http://www.fairyland-europe.com/downloads/Fsetup.exe.torrent');
-//define('BT_HASH','33b18734d474a5992f91b8888f1b3379ea5fee6c');
-define('BT_URL','http://bt.ff.st/33b18734d474a5992f91b8888f1b3379ea5fee6c.torrent');
+define('BT_URL','http://cdimage.debian.org/debian-cd/3.1_r2/i386/bt-cd/debian-31r2-i386-binary-1.iso.torrent');
 
 // Tweak those values for better performances
 define('MAX_WORKING_PIECES',20);
@@ -26,8 +23,8 @@ if (strpos(strtolower(PHP_OS),'win')!==false) {
 #		dl( 'php_w32api.' . PHP_SHLIB_SUFFIX) or die("Could not load php_w32api extention\n");
 #	}
 #} else {
-	if (!extension_loaded('gtk')) {
-		dl( 'php_gtk.' . PHP_SHLIB_SUFFIX) or die("Could not load php_gtk extention\n");
+	if ((!extension_loaded('gtk')) && (!extension_loaded('php-gtk'))) {
+		dl( 'php_gtk.' . PHP_SHLIB_SUFFIX) or dl( 'php_gtk2.' . PHP_SHLIB_SUFFIX) or die("Could not load php_gtk extention\n");
 	}
 #}
 if (!extension_loaded('sockets')) {
@@ -46,7 +43,11 @@ $GLOBALS['TORRENT']=array(
 //DEBUG echo "Downloading bittorrent client ...\n";
 require(PREFIX.'bt_funcs.php');
 #if (!IS_WINDOWS) {
-	require(PREFIX.'bt_gtk.php');
+	if (extension_loaded('php-gtk')) {
+		require(PREFIX.'bt_gtk2.php');
+	} else {
+		require(PREFIX.'bt_gtk.php');
+	}
 #} else {
 #	require(PREFIX.'bt_w32api.php');
 #}

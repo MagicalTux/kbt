@@ -177,9 +177,11 @@ function tcp_write(&$info) {
 	}
 	if ($ret<=0) return true; // can't write yet !
 	// ok, we can send data !
-	$ret=socket_write($sock,$buf);
+	$ret=@socket_write($sock,$buf);
 	if ($ret===false) {
-		$GLOBALS['BtWindow']->gtk_error(socket_strerror(socket_last_error($sock)).' on socket_write');
+//		$GLOBALS['BtWindow']->gtk_error(socket_strerror(socket_last_error($sock)).' on socket_write');
+		echo 'Non-fatal error: '.socket_strerror(socket_last_error($sock))."\n";
+		kill_socket($sockid);
 		return;
 	}
 	$GLOBALS['COUNTERS']['up']+=$ret;

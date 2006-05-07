@@ -51,7 +51,8 @@ class BtMetaFile {
 		
 		// verify target path
 		$GLOBALS['BtWindow']->label_filename->set_text('Downloading : '.$this->info['name']);
-		$tmp_path=$this->GetTempPath($this->multifile); // GetTempPath(true) returns a path in CWD
+//		$tmp_path=$this->GetTempPath($this->multifile); // GetTempPath(true) returns a path in CWD
+		$tmp_path=$this->GetTempPath(true); // GetTempPath(true) returns a path in CWD
 		if (!$tmp_path) return 'Could not determine the target directory.';
 		$this->target = $tmp_path.'/'.$this->info['name'];
 		
